@@ -11,16 +11,16 @@
     <title>Register</title>
 </head>
 <body>
-<div id="a">
+
     <h1>New User Registration</h1>
-    <form action="registersuccess.jsp"  method="post">
+    <form action="/register"  method="post">
         Username:
         <input type="text"
                name="username">
         <br>
 
         Password:
-        <input type="password"name="password">
+        <input type="password" name="password">
         <br>
 
         Email:
@@ -28,8 +28,8 @@
         <br>
 
         Gender
-        <input type="checkbox" name="男"  οnclick="check(this)">Male
-        <input type="checkbox" name="女"  οnclick="check(this)">Female
+        <input type="checkbox" name="gender"  >Male
+        <input type="checkbox" name="gender"  >Female
         <br>
 
         Date of Birth(yyyy-mm-dd):
@@ -39,7 +39,6 @@
         <input type="submit" value="Register" onclick="onk()">
 
     </form>
-</div>
 
 <script type="text/javascript">
     //函数onk，在html中绑定
@@ -49,7 +48,7 @@
         var pwd= document.getElementById("password").value;
 
         //判断用户名是否为空
-        if(username.trim() == "" || password.trim() == ""){
+        if(user.trim() == "" || pwd.trim() == ""){
             alert("用户和密码专不能为空");
             //判断用户名长度
         }else if(user.length < 8 || user.length > 24){

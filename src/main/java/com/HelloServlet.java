@@ -1,4 +1,4 @@
-package com.example.huangqing;
+package com;
 
 import java.io.*;
 import javax.servlet.http.*;
