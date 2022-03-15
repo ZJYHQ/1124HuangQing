@@ -5,9 +5,7 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h3><%= "NAME:HuangQing" %><br/>
-    <%= "ID:2020211001001124" %><br/>
-    <%= "Date and Time Tuesday, March 8, 2022 at 12:00" %>
-</h3>
+<h1><%= "Hello World" %>
+</h1>
 </body>
 </html>
