@@ -11,9 +11,9 @@
     <title>Register</title>
 </head>
 <body>
-<div id="a">
+
     <h1>New User Registration</h1>
-    <form action="${pageContext.request.contextPath}/week2/register"  method="post">
+    <form action="/HuangQing_war_exploded/register"  method="post">
         Username:
         <input type="text"
                name="username">
@@ -39,7 +39,6 @@
         <input type="submit" value="Register" onclick="onk()">
 
     </form>
-</div>
 
 <script type="text/javascript">
     //函数onk，在html中绑定

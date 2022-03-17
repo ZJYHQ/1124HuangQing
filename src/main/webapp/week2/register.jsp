@@ -13,7 +13,7 @@
 <body>
 
     <h1>New User Registration</h1>
-    <form action="/register"  method="post">
+    <form action="/HuangQing_war_exploded/register"  method="post">
         Username:
         <input type="text"
                name="username">
