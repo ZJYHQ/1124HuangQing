@@ -12,29 +12,33 @@
 </head>
 <body>
 <%--Todo 1: Use <jsp:useBean> to create a Login bean instance in request scope --%>
-<jsp:useBean id="Login" scope="request" class="com.HuangQing.Lab2.login">
-</jsp:useBean>
-    <%--Todo 2: Use <jsp:setProperty> to set  beans' property username and password--%>
-<jsp:setProperty name="Login" property="*"/>
+
+<jsp:useBean id="user" scope="request" class="com.HuangQing.model.User"/>
+<jsp:setProperty name="user" property="name" param="name"/>
+<jsp:setProperty name="user" property="password" param="password"/>
+<%--Todo 2: Use <jsp:setProperty> to set  beans' property username and password--%>
 <%
-    if(Login.getUsername().equals("admin") && Login.getPassword().equals("admin")) {%>
+    //todo 3: use if check username is admin and password is admin
+    if(user.getName().equals("admin") && user.getPassword().equals("admin")) {%>
+
 <jsp:forward page="welcome.jsp"></jsp:forward>
-    <%}
-    else {
-        System.out.println("username or password error");
-    }%>
-<%--   //todo 3: use if check username is admin and ppassword is admin--%>
-    <%--todo 4: use jsp:forward to welcome.jsp page--%>
+<%}
+else {
+    out.println("username or password error !!!");
+}
+%>
+<jsp:include page="login.jsp"/>
 
-    <%--todo 5: else part{ --%>
+<%--todo 4: use jsp:forward to welcome.jsp page--%>
+
+<%--todo 5: else part{ --%>
 
 <%
-// todo 6: print username or password error message
-
+    // todo 6: print username or password error message
 %>
-    <%--todo 7: use jsp:include login.jsp page --%>
+<%--todo 7: use jsp:include login.jsp page --%>
 
-    <%--todo 8: close else --%>
+<%--todo 8: close else --%>
 
 </body>
 </html>
