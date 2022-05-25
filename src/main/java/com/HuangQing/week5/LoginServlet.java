@@ -29,9 +29,9 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("ID");
-        String password = req.getParameter("password");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("ID");
+        String password = request.getParameter("password");
         String sql = "select * from user where ID =" + id + ";";
 
         System.out.println(sql);
@@ -45,20 +45,32 @@ public class LoginServlet extends HttpServlet {
                 String t = rs.getString("password");
                 String name = rs.getString("name");
                 if(t.equals(password)) {
-                    PrintWriter writer = resp.getWriter();
+                    PrintWriter writer = response.getWriter();
                     writer.println("<h1>Login success!!!</h1>");
                     writer.println("<p>Welcome " + name + "</p>");
+                    request.setAttribute("id", rs.getString("id"));
+                    request.setAttribute("name", rs.getString("name"));
+                    request.setAttribute("password", rs.getString("password"));
+                    request.setAttribute("email", rs.getString("email"));
+                    request.setAttribute("gender", rs.getString("gender"));
+                    request.setAttribute("birthdate", rs.getString("birthdate"));
+                    request.getRequestDispatcher("usrInfo.jsp").forward(request,response);
                     ok = true;
                 } else {
-                    PrintWriter writer = resp.getWriter();
+                    PrintWriter writer = response.getWriter();
                     writer.println("<h1>Error success!!!</h1>");
                     writer.println("<p>Please Try again</P>");
+                    request.setAttribute("messsage", "ID or password Error !!! ");
+                    request.getRequestDispatcher("Login.jsp").forward(request, response);
                 }
             }
             if(!ok) {
-                PrintWriter writer = resp.getWriter();
+                PrintWriter writer = response.getWriter();
                 writer.println("<h1>Error success!!!</h1>");
                 writer.println("<p>Please Try again</P>");
+                System.out.println("Fail Login!!!");
+                request.setAttribute("message", "ID or password Error !!! ");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
             }
 
         } catch (SQLException e) {
